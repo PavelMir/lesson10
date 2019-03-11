@@ -1,3 +1,8 @@
+UPDATE product_description SET description = '' WHERE lang <> 046;
+SELECT * FROM product_description WHERE description = '';
+
+
+// Ниже это я делал на windows в openserver
 <?php
 $con=mysqli_connect('localhost', 'root', '', 'newa');
 
