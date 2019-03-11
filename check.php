@@ -1,14 +1,13 @@
 delimiter $$
-create procedure selectorinsert(field_lang int(11), field_name varchar(255), field_description text)
+create procedure select_or_insert(field_lang int(11), field_name varchar(255), field_description text)
 begin
-  IF EXISTS (select * from product_description where lang =field_lang AND name=field_name) THEN
-    update product_description set description=description WHERE lang = field_lang AND name = field_name;
-  ELSE
-    insert into product_description (lang, name, description) values (field_lang, field_name, field_description);
+    update product_description set description=field_description WHERE (lang = field_lang AND name = field_name);
+      IF ROW_COUNT() = 0 THEN
+        insert into product_description (lang, name, description) values (field_lang, field_name, field_description);
   END IF;
 end $$
 delimiter ;
-call selectorinsert(222, 'tester', 'testDescription3');
+call select_or_insert(224, 'testersa', 'testDescription7');
 
 // Ниже это я в openserver на windows делал
 <?php
