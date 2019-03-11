@@ -1,9 +1,9 @@
 <?php
 $con=mysqli_connect('localhost', 'root', '', 'newa');
 
-$description='';
-$name='';
-$lang=1;
+//$description='';
+//$name='';
+//$lang=1;
 
 $sqlCheck="SELECT * FROM product_description WHERE description='".$description."' AND lang='".$lang."'";
 $queryCheck=mysqli_query($con, $sqlCheck);
